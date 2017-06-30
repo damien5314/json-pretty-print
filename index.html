@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +15,16 @@
 
 <script>
 function execute() {
-    var input = document.getElementById("input").value
-    var output = document.getElementById("output")
+	var input = document.getElementById("input").value
+	var output = document.getElementById("output")
 
-    output.textContent = JSON.stringify(JSON.parse(input), null, 2)
+	output.textContent = ""
+	
+	try {
+		output.textContent = JSON.stringify(JSON.parse(input), null, 2)
+	} catch (e) {
+		output.textContent = "<invalid json>"
+	}
 }
 document.getElementById("submit").onclick = execute
 </script>
