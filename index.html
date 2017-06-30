@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Pretty Print</title>
+</head>
+<body>
+
+<textarea id="input" rows="40" cols="64" placeholder="Paste JSON here"></textarea>
+<textarea id="output" rows="40" cols="64" readonly="readonly" placeholder="Result"></textarea>
+
+<br />
+
+<input type="submit" id="submit">
+
+<script>
+function execute() {
+    var input = document.getElementById("input").value
+    var output = document.getElementById("output")
+
+    output.textContent = JSON.stringify(JSON.parse(input), null, 2)
+}
+document.getElementById("submit").onclick = execute
+</script>
+
+</body>
+</html>
