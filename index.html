@@ -1,33 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Print JSON in a readable format">
+    <meta name="keywords" content="JSON">
+    <meta name="author" content="Damien Diehl">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON Pretty Print</title>
 </head>
+
+<style>
+body {
+    background-color: #181817;
+}
+#input, #output {
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+a {
+    color: #cccccc;
+}
+.cell {
+    display: inline-block;
+    vertical-align: top;
+}
+</style>
+
 <body>
-
-<textarea id="input" rows="40" cols="64" placeholder="Paste JSON here"></textarea>
-<textarea id="output" rows="40" cols="64" readonly="readonly" placeholder="Result"></textarea>
-
-<br />
-
-<input type="submit" id="submit">
+<div>
+    <div class="cell">
+        <textarea id="input" rows="40" cols="64" placeholder="Paste JSON here"></textarea>
+        <textarea id="output" rows="40" cols="64" readonly="readonly" placeholder="Result"></textarea>
+    </div>
+    <div class="cell">
+        <img src="https://img.shields.io/github/forks/damien5314/json-pretty-print.svg">
+        <br />
+        <img src="https://img.shields.io/github/stars/damien5314/json-pretty-print.svg">
+    </div>
+    <br />
+    <input type="submit" id="submit">
+</div>
 
 <script>
 function execute() {
-    var input = document.getElementById("input").value
+    var input = document.getElementById("input")
     var output = document.getElementById("output")
 
     output.textContent = ""
     
     try {
-        output.textContent = JSON.stringify(JSON.parse(input), null, 2)
+        var json = JSON.parse(input.value)
+        output.textContent = JSON.stringify(json, null, 2)
     } catch (e) {
         output.textContent = "<invalid json>"
     }
 }
 document.getElementById("submit").onclick = execute
 </script>
-
 </body>
+
 </html>
